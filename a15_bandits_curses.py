@@ -24,7 +24,11 @@ def drawchar(pos, char, color=None):
         colorcode = curses.color_pair(1)
     elif char == '#':
         colorcode = curses.color_pair(3)
+    # If you're getting an exception here, your output screen is
+    # probably too small for the output to redner - try making
+    # the terminal window bigger or the font smaller.
     gstdscr.addch(*cursespos, ord(char), colorcode)
+    
 
 def readingkey(pos): 
     '''Use as key function in "reading-order" sorts.'''
@@ -103,6 +107,8 @@ class Creature(object):
 class Cave(object):
 
     # some ANSI color codes to make it look nice
+    # This was for standard printing using cave.print(),
+    # not for the curses functionality I added later.
     markerdraw = {
         'E': '\033[36mE\033[0m', 
         'G': '\033[31mG\033[0m',
@@ -280,6 +286,6 @@ def main(stdscr):
     rounds, hp_left = c.score()
     results = f'Rounds: {rounds}  HP: {hp_left}  Outcome: {rounds * hp_left}'
     stdscr.addstr(c.height+1, 0, results)
-    _ = stdscr.getch()
+    _ = stdscr.getch()  # press any key to continue
 
 wrapper(main)
