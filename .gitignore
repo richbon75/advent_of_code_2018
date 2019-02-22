@@ -3,6 +3,9 @@
 
 *_not_mine*
 
+# Mac junk
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -94,6 +97,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+pypy3*/
 
 # Spyder project settings
 .spyderproject
